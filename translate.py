@@ -49,7 +49,13 @@ def get_reverse(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-    pass
+    sequence = rna_sequence.upper()
+    reverse_seq = sequence[::-1]
+    if len(sequence) == 0:
+        return ""
+    else:
+        return reverse_seq
+
 
 def get_complement(sequence):
     """Get the complement of `sequence`.
