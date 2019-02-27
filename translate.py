@@ -64,7 +64,10 @@ def get_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-    pass
+    sequence = sequence.upper()
+    complement = {'A':'U', 'U':'A', 'C':'G', 'G':'C'}
+
+    return '' .join([complement[base] for base in sequence])
 
 def reverse_and_complement(sequence):
     """Get the reversed and complemented form of `sequence`.
