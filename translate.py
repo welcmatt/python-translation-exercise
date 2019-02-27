@@ -13,7 +13,17 @@ def translate_sequence(rna_sequence, genetic_code):
     If `rna_sequence` is less than 3 bases long, or starts with a stop codon,
     an empty string is returned.
     """
-    pass
+    if len(rna_sequence) < 3:
+        return ''
+    else:
+        sequence=rna_sequence.upper()
+        while len(sequence) >= 3:
+            codon = sequence[0:3]
+            sequence = sequence[3:]
+            if genetic_code[codon] =='*':
+                return ''
+            else:
+                return ''
 
 def get_all_translations(rna_sequence, genetic_code):
     """Get a list of all amino acid sequences encoded by an RNA sequence.
@@ -58,7 +68,11 @@ def reverse_and_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-    pass
+    # just runs through get_complement() and get_reverse()
+
+    complement=get_complement(sequence)
+    reverse_complement=get_reverse(complement)
+    return reverse_complement
 
 def get_longest_peptide(rna_sequence, genetic_code):
     """Get the longest peptide encoded by an RNA sequence.
