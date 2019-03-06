@@ -49,12 +49,20 @@ def get_reverse(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-    sequence = rna_sequence.upper()
-    reverse_seq = sequence[::-1]
-    if len(sequence) == 0:
-        return ""
-    else:
-        return reverse_seq
+
+#    sequence = rna_sequence.upper()
+#    reverse_seq = sequence[::-1]
+#    if len(sequence) == 0:
+#        return ""
+#    else:
+#        return reverse_seq
+
+# below is version Jamie wrote in class on Mar 6
+    sequence = sequence.upper()
+    rev_seq = ""
+    for c in sequence:
+        rev_seq = c + rev_seq
+    return rev_seq
 
 
 def get_complement(sequence):
@@ -64,10 +72,25 @@ def get_complement(sequence):
 
     If `sequence` is empty, an empty string is returned.
     """
-    sequence = sequence.upper()
-    complement = {'A':'U', 'U':'A', 'C':'G', 'G':'C'}
 
-    return '' .join([complement[base] for base in sequence])
+#    sequence = sequence.upper()
+#    complement = {'A':'U', 'U':'A', 'C':'G', 'G':'C'}
+#    return '' .join([complement[base] for base in sequence])
+
+# below is version Jamie wrote in class on Mar 6
+
+    sequence = sequence.upper()
+    comp_bases = {
+        'A': 'U',
+        'U': 'A',
+        'G': 'C',
+        'C': 'G',
+        }
+    comp_seq = ""
+    for c in sequence:
+        comp_seq += comp_bases[c]
+    return comp_seq
+
 
 def reverse_and_complement(sequence):
     """Get the reversed and complemented form of `sequence`.
@@ -79,9 +102,12 @@ def reverse_and_complement(sequence):
     """
     # just runs through get_complement() and get_reverse()
 
-    complement=get_complement(sequence)
-    reverse_complement=get_reverse(complement)
-    return reverse_complement
+#    complement=get_complement(sequence)
+#    reverse_complement=get_reverse(complement)
+#    return reverse_complement
+
+    return get_reverse(get_complement(sequence))
+
 
 def get_longest_peptide(rna_sequence, genetic_code):
     """Get the longest peptide encoded by an RNA sequence.
