@@ -44,6 +44,7 @@ def translate_sequence(rna_sequence, genetic_code):
             break
         amino_acid_list.append(aa)
     return "".join(amino_acid_list)
+    
 
 def get_all_translations(rna_sequence, genetic_code):
     """Get a list of all amino acid sequences encoded by an RNA sequence.
@@ -70,7 +71,7 @@ def get_all_translations(rna_sequence, genetic_code):
         codon = rna_sequence[base_index: base_index + 3]
         if codon == "AUG":
             aa_seq = translate_sequence(
-                rna_sequence = rna_sequence[base_index],
+                rna_sequence = rna_sequence[base_index:],
                 genetic_code = genetic_code)
             if aa_seq:
                 amino_acid_seq_list.append(aa_seq)
